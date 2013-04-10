@@ -1,0 +1,12 @@
+{% extends "content_template.html" %}
+{% block navigation %}
+      <li><a href="/">Главная</a></li>
+      <li><a href="/news">Новости</a></li>
+      <li><a href="/contact">Контакты</a></li>
+      <li class="active"><a href="/schedule">Расписание</a></li>
+	<li><a href="/userlist">Участники</a></li>
+{% endblock %}
+
+{% block main_content %}
+    	{{content|safe}}
+{% endblock %}

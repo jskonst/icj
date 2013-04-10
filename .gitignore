@@ -1,0 +1,8 @@
+/testForms
+/Pycon/settings.py
+/UserProfile
+static/*
+!static
+*.pyc
+*.db
+*.*~

@@ -1,0 +1,45 @@
+{% extends "content_template.html" %}
+{% block navigation %}
+      <li><a href="/">Главная</a></li>
+      <li class="active"><a href="/news">Новости</a></li>
+      <li><a href="/contact">Контакты</a></li>
+      <!--<li><a href="/schedule">Расписание</a></li>-->
+	<!--<li><a href="/userlist">Участники</a></li>-->
+      
+{% endblock %}
+
+{% block main_content %}
+{% for item in items %}
+    	{{item|safe}}
+{% endfor %}
+
+{% endblock %}
+
+{%block pager%}
+<!--Здесь у меня развернуты новые и старые-->
+<ul class="pager">
+	{% if items.has_previous %}
+		<li class="next">
+		<a href="?page={{ items.previous_page_number }}">Новые &rarr;</a>
+		</li>
+	{% else %}
+		<li class="next disabled">
+			<a>Новые &rarr;</a>
+		</li>
+	{% endif %}
+	
+	{% if items.has_next %}
+		<li class="previous">
+			<a href="?page={{ items.next_page_number }}">&larr; Старые</a>
+		</li>
+	{% else %}
+		<li class="previous disabled">
+			<a>&larr; Старые </a>
+		</li>
+	{% endif %}
+
+	<!--<span class="current">-->
+	<!--Page {{ items.number }} of {{ items.paginator.num_pages }}.-->
+	<!--</span>-->
+</ul>
+{% endblock %}

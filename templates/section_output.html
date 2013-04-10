@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block navigation %}
+      <li><a href="/">Главная</a></li>
+      <li><a href="/news">Новости</a></li>
+      <li><a href="/contact">Контакты</a></li>
+      <li><a href="/schedule">Расписание</a></li>
+	<li><a href="/userlist">Участники</a></li>
+{% endblock %}
+
+{% block sections %}
+		<li class="dropdown active">
+			<a href="#"
+			class="dropdown-toggle"
+			data-toggle="dropdown">
+				Секции
+			<b class="caret"></b>
+			</a>
+		<ul class="dropdown-menu">
+			{% for section in sections %}
+			<li>
+				<!--Сразу генерируем меню по секциям - в get запросе-->
+				<a href="/section/?id={{section.id}}">{{section}}</a>
+			</li>
+			{% endfor %}
+		</ul>
+		</li>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="span12">
+    <div class="well">
+	<h1>{{variables}}</h1>
+    </div>
+   </div>
+</div>
+
+{% for item in items %}
+<div class="row">
+    <div class="span12">
+    <div class="well">
+	    <h3><em>{{item.name}}</em></h3>
+	    <address>{{item.profile.country}}, {{item.profile.city}}, {{item.profile.company}}, 
+		    {{item.profile.job}}</address>
+	    <h2>{{item.doklad.title}}</h2>
+	    <h3><em>{{item.doklad.authors}}</em></h3>
+	    <br>
+    	{{item.doklad.text|safe}}
+    </div>
+   </div>
+</div>
+{% endfor %}
+{% endblock %}
+
+
+{%block pager%}
+<ul class="pager">
+	{% if items.has_previous %}
+		<li class="next">
+			<a href="?id={{section.id}}&page={{ items.previous_page_number }}">Туда &rarr;</a>
+		</li>
+	{% else %}
+		<li class="next disabled">
+			<a>Туда &rarr;</a>
+		</li>
+	{% endif %}
+	
+	{% if items.has_next %}
+		<li class="previous">
+			<a href="?id={{section.id}}&page={{ items.next_page_number }}">&larr; Сюда</a>
+		</li>
+	{% else %}
+		<li class="previous disabled">
+			<a>&larr; Сюда </a>
+		</li>
+	{% endif %}
+
+	<!--<span class="current">-->
+	<!--Page {{ items.number }} of {{ items.paginator.num_pages }}.-->
+	<!--</span>-->
+</ul>
+{% endblock %}

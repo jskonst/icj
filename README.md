@@ -1,4 +1,8 @@
-icj
-===
+Create Pycon/settings.py and add:
 
-Ivanovo code jam
+from default_settings import *
+
+DEBUG = True
+DATABASES = {
+    # your DB config
+    }

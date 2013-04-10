@@ -1,0 +1,59 @@
+{% extends "content_template.html" %}
+{% block navigation %}
+      <li><a href="/">Главная</a></li>
+      <li><a href="/news">Новости</a></li>
+      <li><a href="/contact">Контакты</a></li>
+      <li><a href="/schedule">Расписание</a></li>
+	<li  class="active"><a href="/userlist">Участники</a></li>
+{% endblock %}
+
+{% block main_content %}
+<!--<h3>Раздел находится в разработке</h3>-->
+<h3>Список пользователей:</h3>
+<br>
+
+<table class="table table-bordered">
+		<tbody>
+{% for item in items %}
+			<tr>
+				<td><h3>{{item.name}}</h3> <br>
+					{{item.profile.country}}, {{item.profile.city}} <br>
+					{{item.profile.company}}, {{item.profile.job}}
+					<p>ИГТА, IVPY-2012</p>
+				</td>
+{% endfor %}
+			</tr>
+		</tbody>
+</table>
+
+
+
+{% endblock %}
+
+{%block pager%}
+<ul class="pager">
+	{% if items.has_previous %}
+		<li class="next">
+			<a href="?page={{ items.previous_page_number }}">Туда &rarr;</a>
+		</li>
+	{% else %}
+		<li class="next disabled">
+			<a>Туда &rarr;</a>
+		</li>
+	{% endif %}
+	
+	{% if items.has_next %}
+		<li class="previous">
+			<a href="?page={{ items.next_page_number }}">&larr; Сюда</a>
+		</li>
+	{% else %}
+		<li class="previous disabled">
+			<a>&larr; Сюда </a>
+		</li>
+	{% endif %}
+
+	<!--[><span class="current"><]-->
+	<!--[>Page {{ items.number }} of {{ items.paginator.num_pages }}.<]-->
+	<!--[></span><]-->
+</ul>
+{% endblock %}

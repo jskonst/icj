@@ -1,0 +1,7 @@
+{% extends "content_template.html" %}
+{% block main_content %}
+<h1>Активация</h1>
+Здравствуйте, {{ account }} !<br/>
+Ваша учетная запись активирована. <a href="{% url auth_login %}">Заходите</a> на сайт.
+<br/><br/>
+{% endblock %}

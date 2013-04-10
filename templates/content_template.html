@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+<!--Расширяем основную часть интерфейса-->
+{% block content %}
+<div class="row">
+    <div class="span12">
+    <div class="well">
+	    {% block main_content %}
+	    	{{variable}}
+	    {% endblock main_content %}
+    </div>
+   </div>
+</div>
+{% endblock content%}
+
