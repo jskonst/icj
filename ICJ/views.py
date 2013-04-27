@@ -12,19 +12,19 @@ import settings
 
 
 def home(request):
-    staticfile = settings.STATIC_ROOT + "info.html"
-    info = open(staticfile)
-    text = info.read()
-    info.close()
-    return render_to_response('test.html', {'content': text}, RequestContext(request))
+	staticfile = settings.STATIC_ROOT + "info.html"
+	info = open(staticfile)
+	text = info.read()
+	info.close()
+	return render_to_response('test.html', {'content': text}, RequestContext(request))
 
 
 def agreement(request):
     staticfile = settings.STATIC_ROOT + "agreement.html"
     info = open(staticfile)
     text = info.read()
-    info.close()
-    return render_to_response('agreement.html', {'content': text}, RequestContext(request))
+	info.close()
+	return render_to_response('agreement.html', {'content': text}, RequestContext(request))
 
 
 def contacts(request):
@@ -63,3 +63,5 @@ def news(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         news = paginator.page(paginator.num_pages)
     return render_to_response('news.html', {'items': news}, RequestContext(request))
+def some():
+
