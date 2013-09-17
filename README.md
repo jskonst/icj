@@ -4,5 +4,5 @@ from default_settings import *
 
 DEBUG = True
 DATABASES = {
-    # your DB config
+	# your DB config
     }
