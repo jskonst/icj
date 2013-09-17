@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include('registration.urls')),
     url(r'^$', 'ICJ.views.home'),  # Основная страница с информацией
-    url(r'^news/$', 'ICJ.views.news'),  # Новости
+    url(r'^program/$', 'ICJ.views.news'),  # Новости
     url(r'^contact/$', 'ICJ.views.contacts'),  # Контакты
     url(r'^schedule/$', 'ICJ.views.schedule'),
     url(r'^agreement/$', 'ICJ.views.agreement'),
